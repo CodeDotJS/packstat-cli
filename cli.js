@@ -8,7 +8,7 @@ const colors = require('colors');
 
 const argv = require('yargs')
 
-    .usage(colors.cyan.bold('\nUsage: $0 -u [user.name]'))
+    .usage(colors.cyan.bold('\nUsage: $0 -u [module.name]'))
 
     .demand(['u'])
 
