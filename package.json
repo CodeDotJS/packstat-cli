@@ -1,0 +1,52 @@
+{
+  "name": "packstat-cli",
+  "version": "1.0.0",
+  "description": "CLI tool to displays metrics about npm modules.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codedotjs/packstat-cli.git"
+  },
+  "author": "Rishi Giri <rushforlinux@gmail.com> (rishigiri.com)",
+  "bin": {
+    "packstat": "cli.js"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "files": [
+    "cli.js"
+  ],
+  "keywords": [
+    "cli",
+    "cli-app",
+    "package",
+    "download",
+    "month",
+    "day",
+    "week",
+    "stats",
+    "count"
+  ],
+  "dependencies": {
+    "colors": "*",
+    "yargs": "*",
+    "tw": "*"
+  },
+  "devDependencies": {
+    "ava": "*",
+    "pify": "^2.2.0",
+    "xo": "*"
+  },
+  "xo": {
+    "esnext": true
+  },
+  "bugs": {
+    "url": "https://github.com/codedotjs/packstat-cli/issues"
+  },
+  "homepage": "https://github.com/codedotjs/packstat-cli#readme",
+  "main": "cli.js"
+}
