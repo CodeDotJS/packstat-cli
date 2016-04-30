@@ -2,8 +2,6 @@
 
 > Command line tool to isplays metrics about npm modules.
 
-[![Build Status](https://travis-ci.org/CodeDotJS/packstat.svg?branch=master)](https://travis-ci.org/CodeDotJS/packstat)
-
 ## Install
 
 > npm install --global packstat-cli
