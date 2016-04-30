@@ -1,6 +1,6 @@
 # packstat-cli
 
-> Command line tool to isplays metrics about npm modules.
+> Command line tool to displays metrics about npm modules.
 
 ## Install
 
