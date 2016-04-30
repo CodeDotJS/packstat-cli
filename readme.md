@@ -18,6 +18,7 @@ Options:
 
 Missing required argument: u
 
+
 	 $ packstat -u request
 
 	 	❱ Last Day    : 535,972 downloads
