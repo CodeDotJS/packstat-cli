@@ -4,7 +4,7 @@
 
 const packStat = require('packstat');
 
-const colors = require('colors');
+const colors = require('colors/safe');
 
 const argv = require('yargs')
 
