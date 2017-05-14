@@ -8,8 +8,6 @@
 
 > npm install --global packstat-cli
 
-<p align="center"><img src=""></p>
-
 ## Usage
 
 ```
