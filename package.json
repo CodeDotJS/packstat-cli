@@ -1,6 +1,6 @@
 {
   "name": "packstat-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "CLI tool to displays metrics about npm modules.",
   "license": "MIT",
   "repository": {
