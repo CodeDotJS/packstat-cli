@@ -32,9 +32,11 @@
     "count"
   ],
   "dependencies": {
-    "colors": "*",
-    "yargs": "*",
-    "packstat": "*"
+    "got": "^6.6.3",
+    "cheerio": "^0.22.0",
+    "log-update": "^1.0.2",
+    "update-notifier": "^1.0.3",
+    "ora": "^0.4.0"
   },
   "devDependencies": {
     "ava": "*",
