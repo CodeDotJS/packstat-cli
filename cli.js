@@ -2,38 +2,52 @@
 
 'use strict';
 
-const packStat = require('packstat');
+const dns = require('dns');
+const got = require('got');
+const cheerio = require('cheerio');
+const logUpdate = require('log-update');
+const ora = require('ora');
+const updateNotifier = require('update-notifier');
+const pkg = require('./package.json');
 
-const colors = require('colors/safe');
+updateNotifier({pkg}).notify();
+const arg = process.argv[2];
+const spinner = ora();
 
-const argv = require('yargs')
+if (!arg) {
+	console.log(`
+ Usage: packstat <package-name>
 
-    .usage(colors.cyan.bold('\nUsage: $0 -u [module.name]'))
+ Example:
+   $ packstat express
+   `);
+	process.exit(1);
+}
 
-    .demand(['u'])
+dns.lookup('npmjs.com', err => {
+	if (err) {
+		logUpdate(`\n› Please check your internet connection\n`);
+		process.exit(1);
+	} else {
+		logUpdate();
+		spinner.text = `Fetching download counts for ${arg}`;
+		spinner.start();
+	}
+});
 
-    .describe('u', 'Node module name')
+const url = `https://npmjs.com/package/${arg}`;
 
-    .argv;
-
-packStat(argv.u).then(user => {
-	const inf = [];
-
-	const packageRow = (prefix, key) => {
-		if (user[key]) {
-			inf.push(`${prefix}: ${user[key]}`);
-		}
-	};
-
-	console.log('\n');
-
-	packageRow(' ❱ Last Day   ', 'lastDay');
-
-	packageRow(' ❱ Last Week  ', 'lastWeek');
-
-	packageRow(' ❱ Last Month ', 'lastMonth');
-
-	console.log(inf.join('\n'));
-
-	console.log('\n');
+got(url).then(res => {
+	const $ = cheerio.load(res.body);
+	logUpdate(`
+› Last day   : ${$('.pretty-number').eq(0).text()} downloads
+› Last week  : ${$('.pretty-number').eq(1).text()} downloads
+› Last month : ${$('.pretty-number').eq(2).text()} downloads
+	`);
+	spinner.stop();
+}).catch(err => {
+	if (err) {
+		logUpdate(`\n› ${arg} is not a node package\n`);
+		process.exit(1);
+	}
 });
